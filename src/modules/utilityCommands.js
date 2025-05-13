@@ -11,23 +11,23 @@ module.exports = {
 
     handleCommand(command, message, args) {
         switch(command) {
-            case 'ping':
-                this.pingCommand(message);
-                return true;
-            case 'weather':
-                this.weatherCommand(message, args);
-                return true;
-            case 'poll':
-                this.createPoll(message, args);
-                return true;
-            case 'remind':
-                this.setReminder(message, args);
-                return true;
-            case 'serverinfo':
-                this.serverInfoCommand(message);
-                return true;
-            default:
-                return false;
+        case 'ping':
+            this.pingCommand(message);
+            return true;
+        case 'weather':
+            this.weatherCommand(message, args);
+            return true;
+        case 'poll':
+            this.createPoll(message, args);
+            return true;
+        case 'remind':
+            this.setReminder(message, args);
+            return true;
+        case 'serverinfo':
+            this.serverInfoCommand(message);
+            return true;
+        default:
+            return false;
         }
     },
 
@@ -46,7 +46,7 @@ module.exports = {
 
         const city = args.join(' ');
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
+            const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
                 params: {
                     q: city,
                     appid: this.config.weatherApiKey,
@@ -111,11 +111,11 @@ module.exports = {
         
         let milliseconds;
         switch(timeUnit) {
-            case 'm': milliseconds = timeValue * 60 * 1000; break;
-            case 'h': milliseconds = timeValue * 60 * 60 * 1000; break;
-            case 'd': milliseconds = timeValue * 24 * 60 * 60 * 1000; break;
-            default: 
-                return message.reply('Invalid time format. Use m (minutes), h (hours), or d (days).');
+        case 'm': milliseconds = timeValue * 60 * 1000; break;
+        case 'h': milliseconds = timeValue * 60 * 60 * 1000; break;
+        case 'd': milliseconds = timeValue * 24 * 60 * 60 * 1000; break;
+        default: 
+            return message.reply('Invalid time format. Use m (minutes), h (hours), or d (days).');
         }
 
         message.reply(`Reminder set for ${timeArg}: ${reminderMessage}`);

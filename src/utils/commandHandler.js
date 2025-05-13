@@ -42,6 +42,11 @@ class CommandHandler {
             return false;
         }
     }
+
+    // Get all loaded commands
+    getAllCommands() {
+        return Array.from(this.commands.entries());
+    }
 }
 
 module.exports = CommandHandler; 

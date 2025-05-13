@@ -2,7 +2,7 @@ const i18n = require('../utils/i18n');
 
 module.exports = {
     name: 'poll',
-    description: () => i18n.t('commands:poll.description'),
+    description: 'Create an interactive poll with multiple options',
     execute: async (message, args) => {
         if (args.length < 3) {
             return message.reply(i18n.t('commands:poll.usage'));

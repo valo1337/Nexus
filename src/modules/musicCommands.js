@@ -24,26 +24,26 @@ module.exports = {
 
     handleCommand(command, message, args) {
         switch(command) {
-            case 'play':
-                this.playCommand(message, args);
-                return true;
-            case 'pause':
-                this.pauseCommand(message);
-                return true;
-            case 'resume':
-                this.resumeCommand(message);
-                return true;
-            case 'skip':
-                this.skipCommand(message);
-                return true;
-            case 'queue':
-                this.queueCommand(message);
-                return true;
-            case 'stop':
-                this.stopCommand(message);
-                return true;
-            default:
-                return false;
+        case 'play':
+            this.playCommand(message, args);
+            return true;
+        case 'pause':
+            this.pauseCommand(message);
+            return true;
+        case 'resume':
+            this.resumeCommand(message);
+            return true;
+        case 'skip':
+            this.skipCommand(message);
+            return true;
+        case 'queue':
+            this.queueCommand(message);
+            return true;
+        case 'stop':
+            this.stopCommand(message);
+            return true;
+        default:
+            return false;
         }
     },
 

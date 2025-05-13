@@ -14,6 +14,9 @@ const utilityCommands = require('./modules/utilityCommands');
 // Music Modules
 const musicCommands = require('./modules/musicCommands');
 
+// Import the snipe command to access its tracking function
+const snipeCommand = require('./commands/snipe');
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -33,6 +36,8 @@ const player = new Player(client);
 
 // Initialize command handlers
 const commandHandler = new CommandHandler(client, config);
+client.commandHandler = commandHandler;
+client.config = config;
 
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -47,6 +52,9 @@ client.on('ready', async () => {
 
     // Dynamically load commands
     commandHandler.loadCommands(path.join(__dirname, 'commands'));
+
+    // Set up snipe message tracking
+    snipeCommand.trackDeletedMessages(client);
 });
 
 // Message Command Handler

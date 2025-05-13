@@ -26,7 +26,7 @@ module.exports = {
             const conversionEmbed = {
                 color: 0x0099ff,
                 title: '💱 Currency Conversion',
-                description: `**Conversion Result:**\n` +
+                description: '**Conversion Result:**\n' +
                              `${amount} ${fromCurrency.toUpperCase()} = ${convertedAmount} ${toCurrency.toUpperCase()}`,
                 fields: [
                     {
@@ -40,7 +40,7 @@ module.exports = {
             await message.channel.send({ embeds: [conversionEmbed] });
         } catch (error) {
             console.error('Currency conversion error:', error);
-            message.reply(`Could not convert currencies. Please check the currency codes.`);
+            message.reply('Could not convert currencies. Please check the currency codes.');
         }
     }
 }; 

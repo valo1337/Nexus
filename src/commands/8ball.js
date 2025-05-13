@@ -2,7 +2,7 @@ const i18n = require('../utils/i18n');
 
 module.exports = {
     name: '8ball',
-    description: () => i18n.t('commands:8ball.description'),
+    description: 'Ask the magic 8-ball a yes or no question',
     execute: async (message, args) => {
         if (args.length === 0) {
             return message.reply(i18n.t('commands:8ball.noQuestion'));

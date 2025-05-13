@@ -19,7 +19,8 @@ Nexus is not just another Discord bot - it's your server's ultimate companion! D
 - 📊 Server information
 - 🏓 Latency checks
 - 📝 Interactive polls
-- ⏰ Reminder system
+- ⏰ Time zone checks
+- ⏱️ Reminder system
 
 ### 🎵 Music Magic
 - 🎧 YouTube song playback
@@ -33,7 +34,6 @@ Nexus is not just another Discord bot - it's your server's ultimate companion! D
 Before diving in, ensure you have:
 - 💻 [Node.js](https://nodejs.org/) (v16 or higher)
 - 🤖 [Discord Developer Account](https://discord.com/developers/applications)
-- 🌐 [OpenWeatherMap API Key](https://openweathermap.org/api) (Optional)
 
 ### 1. Clone the Repository 🐑
 ```bash
@@ -52,8 +52,8 @@ npm install
 1. Visit [Discord Developer Portal](https://discord.com/developers/applications)
 2. Click "New Application"
 3. Name your app "Nexus"
-4. Go to "Bot" section
-5. Click "Add Bot"
+4. Go to the "Bot" section
+5. Click "Add Bot."
 6. 🔑 Copy your Bot Token (KEEP THIS SECRET!)
 
 #### Step 2: Generate Bot Invite Link
@@ -61,7 +61,7 @@ npm install
    - Select scopes: `bot`, `applications.commands`
    - Select bot permissions: `Administrator`
 2. 🔗 Copy the generated invite link
-3. Open link in browser to add to your server
+3. Open the link in the browser to add to your server
 
 ### 4. Environment Configuration 🔧
 Create a `.env` file in the project root:
@@ -97,8 +97,7 @@ npm start
 - `!clear <number>`: Bulk delete messages
 
 ### 🧰 Utility Commands
-- `!ping`: Check bot's response time
-- `!weather <city>`: Get instant weather
+- `!ping`: Check the bot's response time
 - `!poll "Question" "Option1" "Option2"`: Create polls
 - `!remind <time> <message>`: Set reminders
 - `!serverinfo`: Server health check
@@ -122,7 +121,7 @@ Modify `src/config.js` to personalize Nexus:
 ## 🤝 Community Contributions
 
 1. 🍴 Fork the repository
-2. 🌿 Create feature branch
+2. 🌿 Create a feature branch
 3. 💡 Commit changes
 4. 🚀 Push to branch
 5. 📬 Open Pull Request
@@ -135,7 +134,7 @@ Modify `src/config.js` to personalize Nexus:
 - 🌐 API not working? Confirm API keys
 
 ### Debugging Tips
-- Check console for error messages
+- Check the console for error messages
 - Verify `.env` file configuration
 - Ensure all dependencies are installed
 
@@ -144,5 +143,3 @@ Modify `src/config.js` to personalize Nexus:
 🔗 Project Link: [https://github.com/valo1337/Nexus](https://github.com/valo1337/Nexus)
 
 ---
-
-**Crafted with 💖 by the Nexus Team** 

@@ -32,17 +32,17 @@ module.exports = {
 
     handleCommand(command, message, args) {
         switch(command) {
-            case 'kick':
-                this.kickUser(message, args);
-                return true;
-            case 'ban':
-                this.banUser(message, args);
-                return true;
-            case 'clear':
-                this.clearMessages(message, args);
-                return true;
-            default:
-                return false;
+        case 'kick':
+            this.kickUser(message, args);
+            return true;
+        case 'ban':
+            this.banUser(message, args);
+            return true;
+        case 'clear':
+            this.clearMessages(message, args);
+            return true;
+        default:
+            return false;
         }
     },
 
