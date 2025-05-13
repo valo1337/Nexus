@@ -1,38 +1,43 @@
-require('dotenv').config();
-const { Client, GatewayIntentBits, Partials } = require('discord.js');
-const { Player } = require('discord-player');
-const path = require('path');
+import 'dotenv/config';
+import { Client, GatewayIntentBits, Partials } from 'discord.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const config = require('./config');
-const CommandHandler = require('./utils/commandHandler');
-const i18n = require('./utils/i18n');
+import config from './config.js';
+import CommandHandler from './utils/commandHandler.js';
+import i18n from './utils/i18n.js';
 
 // Server Management Modules
-const serverManagement = require('./modules/serverManagement');
+import serverManagement from './modules/serverManagement.js';
 // Utility Modules
-const utilityCommands = require('./modules/utilityCommands');
+import utilityCommands from './modules/utilityCommands.js';
 // Music Modules
-const musicCommands = require('./modules/musicCommands');
+import musicCommands from './modules/musicCommands.js';
+// Moderation Modules
+import moderationCommands from './modules/moderationCommands.js';
 
 // Import the snipe command to access its tracking function
-const snipeCommand = require('./commands/snipe');
+import snipeCommand from './commands/snipe.js';
+
+// ES Module equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildVoiceStates
-    ],
+    intents: GatewayIntentBits.Guilds | 
+             GatewayIntentBits.GuildMessages | 
+             GatewayIntentBits.MessageContent | 
+             GatewayIntentBits.GuildMembers | 
+             GatewayIntentBits.GuildVoiceStates | 
+             GatewayIntentBits.GuildRoles | 
+             GatewayIntentBits.GuildMessageReactions | 
+             GatewayIntentBits.GuildPresences,
     partials: [
         Partials.Channel,
-        Partials.Message
+        Partials.Message,
+        Partials.Reaction
     ]
 });
-
-// Create a new music player
-const player = new Player(client);
 
 // Initialize command handlers
 const commandHandler = new CommandHandler(client, config);
@@ -48,7 +53,10 @@ client.on('ready', async () => {
     // Initialize modules
     serverManagement.init(client, config);
     utilityCommands.init(client, config);
-    musicCommands.init(client, player, config);
+    moderationCommands.init(client, config);
+
+    // Attach modules to client for easier access
+    client.moderationCommands = moderationCommands;
 
     // Dynamically load commands
     commandHandler.loadCommands(path.join(__dirname, 'commands'));
@@ -65,8 +73,13 @@ client.on('messageCreate', async (message) => {
 });
 
 // Error Handling
-client.on('error', console.error);
-process.on('unhandledRejection', console.error);
+client.on('error', (error) => {
+    console.error('Discord client error:', error);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
 
 // Login to Discord
 client.login(config.token); 
