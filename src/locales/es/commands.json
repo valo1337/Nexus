@@ -1,0 +1,62 @@
+{
+    "ping": {
+        "description": "Comprueba la latencia del bot",
+        "response": "¡Pong! Latencia es {{latency}}ms"
+    },
+    "poll": {
+        "description": "Crear una encuesta interactiva",
+        "usage": "Uso: !poll \"Pregunta\" \"Opción1\" \"Opción2\" ...",
+        "title": "Encuesta: {{question}}"
+    },
+    "serverinfo": {
+        "description": "Muestra información detallada del servidor",
+        "title": "📊 Información del Servidor: {{serverName}}",
+        "fields": {
+            "memberCount": {
+                "name": "👥 Número de Miembros",
+                "total": "Total: {{total}}",
+                "humans": "Humanos: {{humans}}",
+                "bots": "Bots: {{bots}}"
+            },
+            "createdOn": {
+                "name": "📅 Creado El",
+                "value": "{{date}}"
+            },
+            "owner": {
+                "name": "👑 Propietario"
+            },
+            "channels": {
+                "name": "🌐 Canales",
+                "total": "Total: {{total}}",
+                "text": "Texto: {{text}}",
+                "voice": "Voz: {{voice}}"
+            },
+            "roles": {
+                "name": "🎭 Roles",
+                "total": "Total de Roles: {{total}}"
+            }
+        }
+    },
+    "8ball": {
+        "description": "Pregunta a la bola mágica 8",
+        "noQuestion": "¡Por favor, haz una pregunta de sí o no!",
+        "title": "🎱 Bola Mágica 8",
+        "responses": {
+            "positive": [
+                "Es seguro.",
+                "Sin duda.",
+                "Puedes confiar en ello."
+            ],
+            "neutral": [
+                "Pregunta de nuevo más tarde.",
+                "No puedo predecir ahora.",
+                "Concéntrate y pregunta de nuevo."
+            ],
+            "negative": [
+                "No cuentes con ello.",
+                "Mis fuentes dicen que no.",
+                "Perspectivas no muy buenas."
+            ]
+        }
+    }
+} 

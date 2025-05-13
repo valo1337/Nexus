@@ -1,7 +1,11 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits, Partials } = require('discord.js');
 const { Player } = require('discord-player');
+const path = require('path');
+
 const config = require('./config');
+const CommandHandler = require('./utils/commandHandler');
+const i18n = require('./utils/i18n');
 
 // Server Management Modules
 const serverManagement = require('./modules/serverManagement');
@@ -27,27 +31,29 @@ const client = new Client({
 // Create a new music player
 const player = new Player(client);
 
-client.on('ready', () => {
+// Initialize command handlers
+const commandHandler = new CommandHandler(client, config);
+
+client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    
+    // Initialize localization
+    await i18n.init();
     
     // Initialize modules
     serverManagement.init(client, config);
     utilityCommands.init(client, config);
     musicCommands.init(client, player, config);
+
+    // Dynamically load commands
+    commandHandler.loadCommands(path.join(__dirname, 'commands'));
 });
 
 // Message Command Handler
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
-    if (!message.content.startsWith(config.prefix)) return;
-
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    // Delegate to specific module handlers
-    if (serverManagement.handleCommand(command, message, args)) return;
-    if (utilityCommands.handleCommand(command, message, args)) return;
-    if (musicCommands.handleCommand(command, message, args)) return;
+    
+    await commandHandler.handleCommand(message);
 });
 
 // Error Handling

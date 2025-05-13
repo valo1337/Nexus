@@ -1,0 +1,62 @@
+{
+    "ping": {
+        "description": "Vérifie la latence du bot",
+        "response": "Pong ! Latence : {{latency}}ms"
+    },
+    "poll": {
+        "description": "Créer un sondage interactif",
+        "usage": "Utilisation : !poll \"Question\" \"Option1\" \"Option2\" ...",
+        "title": "Sondage : {{question}}"
+    },
+    "serverinfo": {
+        "description": "Affiche des informations détaillées sur le serveur",
+        "title": "📊 Informations du Serveur : {{serverName}}",
+        "fields": {
+            "memberCount": {
+                "name": "👥 Nombre de Membres",
+                "total": "Total : {{total}}",
+                "humans": "Humains : {{humans}}",
+                "bots": "Bots : {{bots}}"
+            },
+            "createdOn": {
+                "name": "📅 Créé Le",
+                "value": "{{date}}"
+            },
+            "owner": {
+                "name": "👑 Propriétaire"
+            },
+            "channels": {
+                "name": "🌐 Canaux",
+                "total": "Total : {{total}}",
+                "text": "Texte : {{text}}",
+                "voice": "Vocal : {{voice}}"
+            },
+            "roles": {
+                "name": "🎭 Rôles",
+                "total": "Total des Rôles : {{total}}"
+            }
+        }
+    },
+    "8ball": {
+        "description": "Poser une question à la boule magique 8",
+        "noQuestion": "Veuillez poser une question par oui ou non !",
+        "title": "🎱 Boule Magique 8",
+        "responses": {
+            "positive": [
+                "C'est certain.",
+                "Sans aucun doute.",
+                "Vous pouvez vous y fier."
+            ],
+            "neutral": [
+                "Réessayez plus tard.",
+                "Je ne peux pas prédire maintenant.",
+                "Concentrez-vous et redemandez."
+            ],
+            "negative": [
+                "N'y comptez pas.",
+                "Mes sources disent non.",
+                "Perspectives pas très bonnes."
+            ]
+        }
+    }
+} 

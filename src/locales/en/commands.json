@@ -1,0 +1,62 @@
+{
+    "ping": {
+        "description": "Checks the bot's latency",
+        "response": "Pong! Latency is {{latency}}ms"
+    },
+    "poll": {
+        "description": "Create an interactive poll",
+        "usage": "Usage: !poll \"Question\" \"Option1\" \"Option2\" ...",
+        "title": "Poll: {{question}}"
+    },
+    "serverinfo": {
+        "description": "Displays detailed information about the server",
+        "title": "📊 Server Information: {{serverName}}",
+        "fields": {
+            "memberCount": {
+                "name": "👥 Member Count",
+                "total": "Total: {{total}}",
+                "humans": "Humans: {{humans}}",
+                "bots": "Bots: {{bots}}"
+            },
+            "createdOn": {
+                "name": "📅 Created On",
+                "value": "{{date}}"
+            },
+            "owner": {
+                "name": "👑 Owner"
+            },
+            "channels": {
+                "name": "🌐 Channels",
+                "total": "Total: {{total}}",
+                "text": "Text: {{text}}",
+                "voice": "Voice: {{voice}}"
+            },
+            "roles": {
+                "name": "🎭 Roles",
+                "total": "Total Roles: {{total}}"
+            }
+        }
+    },
+    "8ball": {
+        "description": "Ask the magic 8-ball a question",
+        "noQuestion": "Please ask a yes or no question!",
+        "title": "🎱 Magic 8-Ball",
+        "responses": {
+            "positive": [
+                "It is certain.",
+                "Without a doubt.",
+                "You may rely on it."
+            ],
+            "neutral": [
+                "Ask again later.",
+                "Cannot predict now.",
+                "Concentrate and ask again."
+            ],
+            "negative": [
+                "Don't count on it.",
+                "My sources say no.",
+                "Outlook not so good."
+            ]
+        }
+    }
+} 
